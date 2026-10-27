@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STAR ACADEMY — WORLD</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #02040a;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+header {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  padding: 25px 6%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ffffff22;
+}
+
+.logo {
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+#globe {
+  position: absolute;
+  inset: 0;
+}
+
+.info {
+  position: absolute;
+  z-index: 1;
+  left: 7%;
+  top: 42%;
+  pointer-events: none;
+}
+
+.info p {
+  color: #8ca9ce;
+  letter-spacing: 4px;
+  font-size: 12px;
+}
+
+h1 {
+  font-size: clamp(36px, 6vw, 76px);
+  letter-spacing: 4px;
+  line-height: 1.05;
+  margin: 15px 0;
+}
+
+.info span {
+  color: #a9b5c9;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+@media(max-width:600px) {
+  header { padding: 20px 5%; }
+  nav { gap: 12px; }
+  nav a { font-size: 10px; }
+  .info { top: 25%; left: 6%; }
+  h1 { font-size: 38px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">STAR ACADEMY</div>
+  <nav>
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#roster">ROSTER</a>
+  </nav>
+</header>
+
+<div id="globe"></div>
+
+<div class="info">
+  <p>MORE THAN A TEAM</p>
+  <h1>OUR WORLD.<br>OUR LEGACY.</h1>
+  <span>VIETNAM ESPORTS</span>
+</div>
+
+<script src="https://unpkg.com/globe.gl"></script>
+<script>
+const world = Globe()
+  (document.getElementById('globe'))
+  .globeImageUrl(
+    'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg'
+  )
+  .bumpImageUrl(
+    'https://unpkg.com/three-globe/example/img/earth-topology.png'
+  )
+  .backgroundColor('#02040a')
+  .showAtmosphere(true)
+  .atmosphereColor('#4c9bff')
+  .atmosphereAltitude(0.18)
+  .width(window.innerWidth)
+  .height(window.innerHeight);
+
+world.controls().autoRotate = true;
+world.controls().autoRotateSpeed = 0.35;
+world.controls().enableZoom = false;
+
+window.addEventListener('resize', () => {
+  world.width(window.innerWidth);
+  world.height(window.innerHeight);
+});
+</script>
+
+</body>
+</html>
